@@ -39,12 +39,7 @@ class Home extends Component {
           classNames="test-node">
 
           <>
-            <div className="col col-left image-wrapper" key="1">
-              <img src={JuliaGreg} alt="Unavailable"></img>
-              <div className="after">Intro</div>
-            </div>
-
-            <div className="col image-wrapper" key="2">
+             <div className="col image-wrapper col-left" key="2">
             <img src={Yosemite} alt="Unavailable"></img>
               <div className="after">Code Samples</div>
             </div>
@@ -59,7 +54,6 @@ class Home extends Component {
               <div className="after">Work & Education</div>
             </div>
           </>
-
         </CSSTransition>
 
       </section>

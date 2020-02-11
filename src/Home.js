@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import Yosemite from "./images/yosemite.jpg";
 import Self from "./images/self.jpg";
-import Pfeiffer from "./images/pfeiffer.jpg";
-import JuliaGreg from "./images/julia_greg.jpg";
-import RockLookback from "./images/rock_lookback.jpg";
-import WelcomeMessage from './WelcomeMessage';
-import { CSSTransition } from 'react-transition-group'; // ES6
+import Coding from "./images/coding.png";
 
 class Home extends Component {
   constructor(props) {
@@ -13,7 +9,6 @@ class Home extends Component {
 
     this.state = {
       mounted: false,
-      showImages: false,
     }
   }
 
@@ -21,43 +16,41 @@ class Home extends Component {
     this.setState({mounted: true});
   }
 
-  showImages = () => {
-    this.setState({showImages: true});
-  }
-
   render() {
 
     return (
-
       <section className="intro-images-container">
 
-        <WelcomeMessage showImages={this.showImages} />
+        <header className="welcomeHeader">
+          <h1>
+            Greg Miller
+          </h1>
+          <h2>
+            Web Developer
+          </h2>
+        </header>
 
-        <CSSTransition
-          in={this.state.mounted && this.state.showImages}
-          timeout={100}
-          classNames="test-node">
+        <article>
+          <div className="col image-wrapper" style={{marginLeft:"0px"}} key="4">
+            <div className="after green" />
+            <img src={Coding} alt="Unavailable"></img>
+            <div className="after-bottom-message bottom-green"><span>Blog</span></div>
+          </div>
 
-          <>
-             <div className="col image-wrapper col-left" key="2">
-            <img src={Yosemite} alt="Unavailable"></img>
-              <div className="after">Code Samples</div>
-            </div>
+          <div className="col image-wrapper" key="4">
+            <div className="after orange" />
+            <img src={Coding} alt="Unavailable"></img>
+            <div className="after-bottom-message bottom-orange"><span>Blog</span></div>
+          </div>
 
-            <div className="col image-wrapper" key="3">
-            <img src={Self} alt="Unavailable"></img>
-              <div className="after">Blog</div>
-            </div>
-
-            <div className="col image-wrapper" key="4">
-            <img src={RockLookback} alt="Unavailable"></img>
-              <div className="after">Work & Education</div>
-            </div>
-          </>
-        </CSSTransition>
+          <div className="col image-wrapper" key="4">
+            <div className="after blue" />
+            <img src={Coding} alt="Unavailable"></img>
+            <div className="after-bottom-message bottom-blue"><span>Code Samples</span></div>
+          </div>
+        </article>
 
       </section>
-
     )
   }
 }

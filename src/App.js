@@ -9,7 +9,7 @@ class App extends Component {
   render(){
     return(
       <>
-        <header>
+        <header className="appHeader">
           <p>
             greg
           </p>

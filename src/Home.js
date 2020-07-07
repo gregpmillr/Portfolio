@@ -1,55 +1,99 @@
-import React, { Component } from 'react';
-import Yosemite from "./images/yosemite.jpg";
-import Self from "./images/self.jpg";
-import Coding from "./images/coding.png";
+import React from 'react';
+import {createUseStyles} from 'react-jss'
+import { HomeModal } from "./HomeModal";
+import { Header } from "./Header";
+import Background from "./images/background.jpg";
+import { AboutMe } from "./AboutMe";
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      mounted: false,
+// Create your Styles. Remember, since React-JSS uses the default preset,
+// most plugins are available without further configuration needed.
+const useStyles = createUseStyles({
+  outerContainer: {
+    width: '100%',
+    background: `
+      linear-gradient(
+        rgba(10, 31, 49, 0.60), 
+        rgba(10, 31, 49, 0.60)
+      ), 
+      url(${Background}) top center no-repeat`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover'
+  },
+  container: {
+    display: 'flex',
+    flexFlow: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    padding: '0px',
+    paddingTop: '15%',
+    margin: '0 auto',
+    clear: 'all',
+    width: '80%',
+  },
+  header: {
+    width: '100%',
+    textAlign: 'center',
+  },
+  h1: {
+    fontSize: '5em',
+    textTransform: 'uppercase',
+    margin: '15px',
+    color: '#fff',
+    fontWeight: '400',
+    letterSpacing: '0.1em'
+  },
+  h2: {
+    fontSize: '4em',
+    color: '#6bccef',
+    fontWeight: '300'
+  },
+  imagesContainer: {
+    width: '100%'
+  },
+  '@media (max-width: 1050px)': {
+    container: {
+      alignItems: 'flex-start',
+      flexWrap:"wrap"
+    },
+    h1: {
+      fontSize: '2.8em'
+    },
+    h2: {
+      fontSize: '2.3em'
     }
-  }
+  },
+});
 
-  componentDidMount() {
-    this.setState({mounted: true});
-  }
+export const Home = () => {
+  const myClasses = useStyles()
 
-  render() {
+  return (
+    <div className={myClasses.outerContainer}>
+      <Header />
+      <section className={myClasses.container}>
 
-    return (
-      <section className="intro-images-container">
-
-        <header className="welcomeHeader">
-          <h1>
+        <header className={myClasses.header}>
+          <h1 className={myClasses.h1}>
             Greg Miller
           </h1>
-          <h2>
+          <h2 className={myClasses.h2}>
             Web Developer
           </h2>
         </header>
 
-        <article className="images-container">
-          <div className="col image-wrapper" style={{marginLeft:"0px"}} key="4">
-            <p>Blog</p>
-            <div className="after green" />
-          </div>
-
-          <div className="col image-wrapper" key="4">
-            <p>Blog</p>
-            <div className="after orange" />
-          </div>
-
-          <div className="col image-wrapper" key="4">
-            <p>Code Samples</p>
-            <div className="after blue" />
-          </div>
+        <article className={myClasses.imagesContainer}>
+            <HomeModal text={"About Me"} color={"green"} style={{ marginLeft: "0px" }}>
+              <AboutMe />
+            </HomeModal>
+            <HomeModal text={"Blog"} color={"orange"}>
+              <p>I'm a modal!</p>
+            </HomeModal>
+            <HomeModal text={"Skills"} color={"blue"}>
+              <p>I'm a modal!</p>
+            </HomeModal>
         </article>
 
       </section>
-    )
-  }
+    </div>
+  )
 }
-
-export default Home;

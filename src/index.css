@@ -1,257 +1,34 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700&display=swap');
 
-html, body, body::before, #root {
+html, body {
   color: #fff;
   font-family: 'Open Sans', sans-serif;
   letter-spacing: 1.9px;
+  margin: 0px;
+  padding: 0px;
 }
 
-body {
-  margin: 0;
-}
-
-body::before {
-  content: "";
-  display: block;
+#modal {
+  background:#31313a;
+  z-index: 1;
   position: fixed;
   left: 0;
+  right: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -10;
-  background: rgba(10, 31, 49, 0.83) url("images/background.jpg") top center no-repeat;
-  background-repeat: no-repeat;
-  background-size: cover;
+  bottom: 0;
+  margin: auto;
+  width: 80%;
+  height: 80%;
+  box-shadow: 0 5px 10px 2px rgba(10, 31, 49, 1);
+  overflow: auto;
+  overscroll-behavior: contain /* Prevent SCROLL-CHAINING to parent elements. */
 }
 
 #root {
   background-color: rgba(10, 31, 49, 0.83);
-  width: 80%;
-  padding: 20px 10%;
-}
-
-.appHeader {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  flex: 0 1 auto;
-  /*
-    The above is shorthand for:
-    flex-grow: 0,
-    flex-shrink: 1,
-    flex-basis: auto
-  */
-}
-
-.appHeader > p {
-  border-bottom: 3px solid #fff;
-  padding-bottom: 10px;
-}
-
-.welcomeHeader {
-  width: 100%;
-  text-align: center;
-}
-
-.welcomeHeader h1 {
-  font-size: 5em;
-  text-transform: uppercase;
-  margin: 15px;
-  color: #fff;
-  font-weight: 400;
-  letter-spacing: 0.1em;
-}
-
-.welcomeHeader h2 {
-  font-size: 4em;
-  color: #6bccef;
-  font-weight: 300;
-}
-
-.appHeader > div {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-}
-
-.appHeader > div > img {
-  margin: 5px;
-  width: 25px;
-  height: 25px;
-}
-
-.intro-images-container {
-  display: flex;
-  flex-flow: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding: 0px;
-  padding-top: 25%;
-  margin: 0px;
-  clear: all;
-}
-
-.col {
-  width: 32%;
-  margin: 1% 0% 1% 2%;
-  float: left;
-}
-
-.col-left {
-  margin-left: 0px;
-}
-
-.intro-images-container > div {
-  transition: opacity 1000ms;
-  text-align: center;
-}
-
-.welcome-message-enter {
-  opacity: 0 !important;
-}
-
-.welcome-message-enter-active {
-  opacity: 1;
-}
-
-.welcome-message-enter-done h2 {
-  opacity: 1;
-  animation: show 4s linear;
-}
-
-@keyframes show {
-  0% {
-    opacity: 0;
-  }
-  60% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.welcome-message-enter-done {
-  opacity: 1;
-}
-
-.welcome-message-exit {
-  opacity: 0;
-}
-
-.welcome-message-exit-active {
-  opacity: 0;
-}
-
-.welcome-message-exit-done {
-  display: none;
-  opacity: 0;
-}
-
-.test-node-enter {
-  display: none !important;
-  opacity: 0 !important;
-}
-
-.test-node-enter-active {
-  display: flex !important;
-  opacity: 1;
-}
-
-.test-node-enter-done {
-  display: flex !important;
-  opacity: 1;
-}
-
-.test-node-exit {
-  display: flex;
-  opacity: 1;
-}
-
-.welcome-message-exit-active {
-  opacity: 0;
-}
-
-.welcome-message-exit-done {
-  display: none;
-  opacity: 0;
-}
-
-.images-container {
-  width: 100%;
-}
-
-.image-wrapper {
-  display: flex;
-  flex-flow: column;
-  flex: 1;
-  position: relative;
-  overflow: hidden;
-  opacity: 1;
-  height: 350px;
-}
-
-.image-wrapper > p {
-  height: auto;
-  margin: auto;
-  color: #fff;
-  z-index: 1;
-}
-
-.after {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  color: #FFF;
-  display: flex;
-  background: rgba(0, 0, 0, .6);
-  justify-content: center;
-  align-items: center;
-}
-
-.after > span {
-  position: absolute;
-  bottom: 20px;
-}
-
-.green {
-  background: rgba(79, 144, 19, 0.6);
-}
-
-.orange {
-  background: rgba(187, 102, 12, 0.71)
-}
-
-.blue {
-  background: rgba(34, 50, 180, 0.61)
-}
-
-.image-wrapper:hover .after {
-  background: rgba(0, 0, 0, .2);
 }
 
 @media all and (max-width: 1050px) {
-  #intro-images-container {
-    align-items: flex-start;
-  }
-
-  #intro-images {
-    width: 100%;
-  }
-
-  .image-wrapper {
-    width: 100%;
-    margin: 0px;
-    max-height: none;
-  }
-
-  #root {
-    width: 95%;
-    padding: 20px 2.5%;
-  }
 
   .welcomeHeader h1 {
     font-size: 3em;

@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
 html, body {
   color: #fff;
@@ -6,6 +7,11 @@ html, body {
   letter-spacing: 1.9px;
   margin: 0px;
   padding: 0px;
+  height: 100%;
+}
+
+body.modal-open {
+  overflow: hidden;
 }
 
 #modal {
@@ -26,16 +32,24 @@ html, body {
 
 #root {
   background-color: rgba(10, 31, 49, 0.83);
+  height: 100%;
 }
 
 @media all and (max-width: 1050px) {
-
   .welcomeHeader h1 {
     font-size: 3em;
+  }
+
+  #blogList {
+    animation: slide-sm 0.5s forwards;
   }
 
   .welcomeHeader h2 {
     font-size: 2.4em;
   }
 
+  #modal {
+    width: 100%;
+    height: 100%;
+  }
 }

@@ -1,17 +1,16 @@
 import React from "react";
-import {createUseStyles} from 'react-jss'
+import { createUseStyles } from "react-jss";
 
 const useStyles = createUseStyles({
-  header: {
+  container: {
     position: 'relative',
-    fontSize: '20px',
-    color: '#dedee0',
-    letterSpacing: '0.02em',
-    fontWeight: '600',
-    paddingBottom: '15px',
-    '&:after': {
+    display: 'flex',
+    flexFlow: 'column nowrap',
+    justifyContent: "flex-start",
+    padding: '40px 0px',
+    '&:before': {
       position: 'absolute',
-      bottom: '0px',
+      top: '0px',
       width: '100%',
       marginTop: '0px',
       content: '""',
@@ -19,12 +18,12 @@ const useStyles = createUseStyles({
       height: '1px', /*for horizontal border; width for vertical*/
       display: 'block',
     }
-  },
+  }
 })
 
-export const SectionHeader = ({children}) => {
+export const SectionBody = ({ styles, children }) => {
   const classes = useStyles();
   return (
-    <header className={classes.header}>{children}</header>
+    <div style={styles} className={classes.container}>{children}</div>
   )
-};
+}

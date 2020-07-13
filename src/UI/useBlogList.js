@@ -1,14 +1,9 @@
 import { useState } from 'react';
 
-const useModal = () => {
+const useBlogList = () => {
   const [isShowing, setIsShowing] = useState(false);
 
   function toggle() {
-    if (!isShowing) {
-      document.body.classList.add('modal-open');
-    } else {
-      document.body.classList.remove('modal-open');
-    }
     setIsShowing(!isShowing);
   }
 
@@ -18,4 +13,4 @@ const useModal = () => {
   }
 };
 
-export default useModal;
+export default useBlogList;

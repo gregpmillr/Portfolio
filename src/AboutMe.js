@@ -1,9 +1,10 @@
 import React from "react";
 import {createUseStyles} from 'react-jss'
 import profileImg from "./images/profileCircle.png";
-import { useState } from 'react';
+import useResume from "./UI/useResume";
 import { SectionHeader } from "./UI/SectionHeader";
-import { Column } from "./UI/Column";
+import { Resume } from "./UI/Resume";
+import { useState } from 'react';
 
 const useStyles = createUseStyles({
   layout: {
@@ -64,14 +65,14 @@ const useStyles = createUseStyles({
     fontWeight: '500',
     cursor: 'pointer',
     '&:hover': {
-      color: '#ff9800',
+      color: '#feb13e',
     }
   },
   downloadableLeftBorder: {
     borderLeft: '1px solid rgba(197,202,213,.15)',
   },
   orange: {
-    color: '#ff9800',
+    color: '#feb13e',
   },
   section: {
     marginTop: '70px',
@@ -94,25 +95,29 @@ const useStyles = createUseStyles({
     width: '50%',
   },
   strong: {
-    fontWeight: '600',
+    fontWeight: '500',
+    fontSize: '0.94em',
     color: 'rgba(255, 255, 255, 0.91)',
   },
   resumeContainer: {
     display: 'flex',
     flexFlow: 'row nowrap',
-    paddingTop: '30px',
   },
   columnPadding: {
-    padding: '0px 20px'
+    padding: '0px 20px',
+    paddingTop: '15px'
   },
   borderLeft: {
     borderLeft: '1px solid rgba(197,202,213,.15)',
   },
   '@media (max-width: 1450px)': {
+    profileTitle: {
+      fontSize: '1.05em',
+    },
     profileImage: {
       margin: '0px',
       marginLeft: '20px',
-      width: '80px'
+      width: '60px'
     },
     layout: {
       flexFlow: 'column nowrap',
@@ -152,7 +157,7 @@ const useStyles = createUseStyles({
     downloadable: {
       flex: 'unset',
       width: 'auto',
-      border: '1px solid #ff9800 !important',
+      border: '1px solid #feb13e !important',
       margin: '10px',
       padding: '0px 10px'
     },
@@ -162,48 +167,46 @@ const useStyles = createUseStyles({
   }
 })
 
-function useResume() {
-  const [isShowing, setIsShowing] = useState(false);
+function useContactForm() {
+  const [showContactForm, setShowContactForm] = useState(false);
 
-  function toggle(e) {
+  function toggleContactForm(e) {
     e.stopPropagation();
-    setIsShowing(!isShowing);
+    setShowContactForm(!showContactForm);
   }
 
   return {
-    isShowing,
-    toggle,
+    showContactForm,
+    toggleContactForm
   }
 }
 
-function renderResume(classes) {
+function renderContactForm(classes) {
   return (
     <article className={classes.container}>
+
       <section className={classes.section}>
-        <SectionHeader>Resume</SectionHeader>
-        <div className={classes.resumeContainer}>
-          <Column rootClasses={classes.columnPadding}>
-            <SectionHeader>EXPERIENCE</SectionHeader>
-            <p>blah</p>
-            <p>blah</p>
-            <p>blah</p>
-            <p>blah</p>
-            <p>blah</p>
-            <p>blah</p>
-
-          </Column>
-          <Column rootClasses={`${classes.borderLeft} ${classes.columnPadding}`}>
-            <SectionHeader>EDUCATION</SectionHeader>
-            <p>blah</p>
-            <p>blah</p>
-            <p>blah</p>
-            <p>blah</p>
-            <p>blah</p>
-            <p>blah</p>
-
-          </Column>
+        <SectionHeader>
+          <span className={classes.orange}><strong>Get</strong></span> <strong>in Touch</strong>
+        </SectionHeader>
+        <div className={classes.personalInfo}>
+          <div className={classes.col}>
+            <p className={`${classes.p}`}><span className={classes.strong}>ADDRESS</span>:... Nova Scotia, Canada</p>
+            <p className={`${classes.p}`}><span className={classes.strong}>PHONE</span>:... +902 210 5887</p>
+          </div>
+          <div className={classes.col}>
+            <p className={`${classes.p}`}><span className={classes.strong}>EMAIL</span>:... gregpmillr@gmail.com</p>
+            <p className={`${classes.p}`}><span className={classes.strong}>FREELANCE</span>:... Available</p>
+          </div>
         </div>
       </section>
+
+      <section className={classes.section}>
+        <SectionHeader>
+          <span className={classes.orange}><strong>Contact Form</strong></span>
+        </SectionHeader>
+      </section>
+
     </article>
   )
 }
@@ -213,10 +216,10 @@ function renderBio(classes) {
     <article className={classes.container}>
       <section className={classes.section}>
         <SectionHeader>
-          <span className={classes.orange}>About</span> Me
+          <span className={classes.orange}><strong>About Me</strong></span>
         </SectionHeader>
         <p className={`${classes.p}`}>
-          I'm a web developer based in Halifax, NS. I hold a diploma
+          I'm a web developer from Halifax, NS. I hold a diploma
           from the Nova Scotia Community College (NSCC) in Data Applications Programming, and
           a degree in Applied Computer Science (BACS) from Dalhousie University.
         </p>
@@ -234,38 +237,48 @@ function renderBio(classes) {
 
       <section className={classes.section}>
         <SectionHeader>
-          <span className={classes.orange}>Work</span> Ethic
+          <span className={classes.orange}><strong>Work Ethic</strong></span>
         </SectionHeader>
         <p className={`${classes.p}`}>
-          I pride Myself in being the sole developer for a local start-up for
+          I've been the sole developer for a local start-up for
           3 years, leading the development of a scalable web application and later 
-          putting together a remarkable team of developers. It 
-          may be because of this that my work ethic leads me to believe proper developers must 
-          understand best-practices of the technology they are working with, the Software Development
-          Lifecycle, and have working knowledge of all parts of their application.
+          forming a great team of developers. This involved many sleeples nights,
+          and is the core reason for my work ethic. I believe a proper developer must 
+          deeply understand best-practices of the technology they are working with, 
+          how the technology was built, why the technology was built, the Software 
+          Development Lifecycle, and have working knowledge of all parts of their 
+          application, not only their own role.
         </p>
       </section>
 
       <section className={classes.section}>
-        <SectionHeader>
-          Interests
-        </SectionHeader>
+        <SectionHeader><span className={classes.orange}><strong>Interests</strong></span></SectionHeader>
         <p className={`${classes.p}`}>
           Other than work, I have a few more interests. Recently, I've been learning of 
-          genetic algorithms to create evolution simulations using Unity. I'm an avid 
-          woodworker, taking after my Father, Grandfather, and others in my family.
-          My main mode of transportation is a Boosted Board. Finally, I'm sure many describe 
-          me as the quiet outdoorsy type, because of how frequently I backwoods camp 
-          and hike.
+          genetic algorithms to create evolution simulations using Unity. I frequently
+          woodwork, taking after my Father, Grandfather, and others in my family.
+          My main mode of transportation is a Boosted Board. Finally, I enjoy the outdoors
+          by backwoods camping and hiking as frequently as I can.
         </p>
       </section>
     </article>
   )
 }
 
+function renderContent(showResume, showContactForm, classes) {
+  if (showResume) {
+    return <Resume />;
+  } else if (showContactForm) {
+    return renderContactForm(classes);
+  } else {
+    return renderBio(classes);
+  }
+}
+
 export const AboutMe = () => {
   const classes = useStyles();
   const { isShowing, toggle } = useResume();
+  const { showContactForm, toggleContactForm } = useContactForm();
   return (
     <div className={classes.layout}>
       <div className={classes.left}>
@@ -275,15 +288,25 @@ export const AboutMe = () => {
           <p className={`${classes.orange} ${classes.profileRole}`}>Web Developer</p>
         </div>
         <div className={classes.downloads}>
-          <div className={classes.downloadable} onClick={toggle}>
+          <div className={classes.downloadable} onClick={(e) => {
+            if (showContactForm) {
+              toggleContactForm(e);
+            }
+            toggle(e);
+          }}>
             <p>{isShowing ? 'BIO' : 'RESUME'}</p>
           </div>
-          <div className={`${classes.downloadable} ${classes.downloadableLeftBorder}`}>
+          <div className={`${classes.downloadable} ${classes.downloadableLeftBorder}`} onClick={(e) => {
+            if (isShowing) {
+              toggle(e);
+            }
+            toggleContactForm(e);
+            }}>
             <p>CONTACT ME</p>
           </div>
         </div>
       </div>
-      { isShowing ? renderResume(classes, toggle) : renderBio(classes) }
+      {renderContent(isShowing, showContactForm, classes)}
     </div>
   )
 }

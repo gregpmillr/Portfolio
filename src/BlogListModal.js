@@ -1,8 +1,8 @@
 import React from "react";
-import { Modal } from "./UI/Modal";
+import { BlogList } from "./UI/BlogList";
 import { global } from "./jss";
 import withStyles, {createUseStyles} from 'react-jss'
-import useModal from './UI/useModal';
+import useBlogList from './UI/useBlogList';
 
 const useStyles = createUseStyles({
   p: {
@@ -20,16 +20,14 @@ const useStyles = createUseStyles({
   }
 })
 
-export const HomeModal = withStyles(global)(({text, children}) => {
+export const BlogListModal = withStyles(global)(() => {
   const myClasses = useStyles()
-  const { isShowing, toggle } = useModal();
+  const { isShowing, toggle } = useBlogList();
 
   return (
     <div onClick={toggle}>
-      <p className={myClasses.p} onClick={toggle}>{text}</p>
-      <Modal isShowing={isShowing} hide={toggle}>
-        {children}
-      </Modal>
+      <p className={myClasses.p} onClick={toggle}>BLOG</p>
+      <BlogList isShowing={isShowing} hide={toggle} />
     </div>
   )
 })

@@ -47,13 +47,13 @@ function useKeyPress(targetKey) {
   return keyPressed;
 }
 
-export const Modal = ({ isShowing, hide, children }) => {
+export const Modal = ({ isShowing, hide, rootClasses, children }) => {
   const classes = useStyles();
   const escPressed = useKeyPress(27);
 
   if (isShowing) {
     return createPortal(
-      <div id="modal" aria-modal aria-hidden tabIndex={-1} role="dialog">
+      <div id="modal" className={`${rootClasses}`} aria-modal aria-hidden tabIndex={-1} role="dialog">
         { escPressed && hide()}
         <button type="button" className={classes.close} data-dismiss="modal" aria-label="Close" onClick={hide}>
           <span aria-hidden="true">&times;</span>

@@ -1,54 +1,66 @@
 import React from 'react';
 import {createUseStyles} from 'react-jss'
+import { BlogListModal } from "./BlogListModal";
 import { HomeModal } from "./HomeModal";
-import { Header } from "./Header";
+import { Footer } from "./Footer";
 import Background from "./images/background.jpg";
 import { AboutMe } from "./AboutMe";
+import { ContactModal } from "./UI/ContactModal";
 
 // Create your Styles. Remember, since React-JSS uses the default preset,
 // most plugins are available without further configuration needed.
 const useStyles = createUseStyles({
   outerContainer: {
+    position: 'relative',
+    height: '100%',
     width: '100%',
+    minHeight: '100%',
     background: `
       linear-gradient(
-        rgba(10, 31, 49, 0.60), 
-        rgba(10, 31, 49, 0.60)
+        rgba(10, 31, 49, 0.80), 
+        rgba(10, 31, 49, 0.80)
       ), 
       url(${Background}) top center no-repeat`,
     backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover'
+    backgroundSize: 'cover',
+    display: 'flex',
+    flexFlow: 'column nowrap',
+    justifyContent: 'center',
+    alignItems: 'center',
+    overflow: 'auto'
   },
   container: {
     display: 'flex',
     flexFlow: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    padding: '0px',
-    paddingTop: '15%',
-    margin: '0 auto',
-    clear: 'all',
+    margin: 'auto',
     width: '80%',
+    maxHeight: '100%',
   },
   header: {
     width: '100%',
     textAlign: 'center',
   },
   h1: {
-    fontSize: '5em',
+    fontFamily: 'Playfair Display',
+    fontSize: '3.8em',
     textTransform: 'uppercase',
-    margin: '15px',
+    margin: '30px',
     color: '#fff',
     fontWeight: '400',
     letterSpacing: '0.1em'
   },
   h2: {
-    fontSize: '4em',
-    color: '#6bccef',
-    fontWeight: '300'
+    fontSize: '1em',
+    margin: '50px',
+    color: '#fff',
+    fontWeight: '400',
   },
-  imagesContainer: {
-    width: '100%'
+  listItems: {
+    display: 'flex',
+    flexFlow: 'row wrap',
+    width: 'auto'
   },
   '@media (max-width: 1050px)': {
     container: {
@@ -56,11 +68,11 @@ const useStyles = createUseStyles({
       flexWrap:"wrap"
     },
     h1: {
-      fontSize: '2.8em'
+      fontSize: '2.5em'
     },
     h2: {
-      fontSize: '2.3em'
-    }
+      fontSize: '1.2em'
+    },
   },
 });
 
@@ -69,31 +81,28 @@ export const Home = () => {
 
   return (
     <div className={myClasses.outerContainer}>
-      <Header />
       <section className={myClasses.container}>
 
         <header className={myClasses.header}>
           <h1 className={myClasses.h1}>
-            Greg Miller
+            greg miller
           </h1>
           <h2 className={myClasses.h2}>
-            Web Developer
+            Let's build something amazing.
           </h2>
         </header>
 
-        <article className={myClasses.imagesContainer}>
-            <HomeModal text={"About Me"} color={"green"} style={{ marginLeft: "0px" }}>
+        <article className={myClasses.listItems}>
+            <HomeModal text={"ABOUT ME"}>
               <AboutMe />
             </HomeModal>
-            <HomeModal text={"Blog"} color={"orange"}>
-              <p>I'm a modal!</p>
-            </HomeModal>
-            <HomeModal text={"Skills"} color={"blue"}>
-              <p>I'm a modal!</p>
-            </HomeModal>
+            <BlogListModal />
+            <ContactModal />
         </article>
 
       </section>
+
+      <Footer />
     </div>
   )
 }

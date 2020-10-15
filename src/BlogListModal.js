@@ -25,7 +25,7 @@ export const BlogListModal = withStyles(global)(() => {
   const { isShowing, toggle } = useBlogList();
 
   return (
-    <div onClick={toggle}>
+    <div>
       <p className={myClasses.p} onClick={toggle}>BLOG</p>
       <BlogList isShowing={isShowing} hide={toggle} />
     </div>

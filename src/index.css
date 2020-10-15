@@ -15,7 +15,7 @@ body.modal-open {
 }
 
 #modal {
-  background:#31313a;
+  background:#2a2a2f;
   z-index: 1;
   position: fixed;
   left: 0;
@@ -27,11 +27,30 @@ body.modal-open {
   height: 80%;
   box-shadow: 0 5px 10px 2px rgba(10, 31, 49, 1);
   overflow: auto;
-  overscroll-behavior: contain /* Prevent SCROLL-CHAINING to parent elements. */
+  overscroll-behavior: contain; /* Prevent SCROLL-CHAINING to parent elements. */
+  animation-name: fade-in;
+  animation-duration: .5s;
 }
 
-#root {
+@keyframes fade-in {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
+
+#modal button {
+  z-index: 9999;
+}
+
+/* #root {
   background-color: rgba(10, 31, 49, 0.83);
+  height: 100%;
+} */
+
+#root {
   height: 100%;
 }
 

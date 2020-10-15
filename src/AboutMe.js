@@ -4,7 +4,6 @@ import profileImg from "./images/profileCircle.png";
 import useResume from "./UI/useResume";
 import { SectionHeader } from "./UI/SectionHeader";
 import { Resume } from "./UI/Resume";
-import { useState } from 'react';
 
 const useStyles = createUseStyles({
   layout: {
@@ -167,50 +166,6 @@ const useStyles = createUseStyles({
   }
 })
 
-function useContactForm() {
-  const [showContactForm, setShowContactForm] = useState(false);
-
-  function toggleContactForm(e) {
-    e.stopPropagation();
-    setShowContactForm(!showContactForm);
-  }
-
-  return {
-    showContactForm,
-    toggleContactForm
-  }
-}
-
-function renderContactForm(classes) {
-  return (
-    <article className={classes.container}>
-
-      <section className={classes.section}>
-        <SectionHeader>
-          <span className={classes.orange}><strong>Get</strong></span> <strong>in Touch</strong>
-        </SectionHeader>
-        <div className={classes.personalInfo}>
-          <div className={classes.col}>
-            <p className={`${classes.p}`}><span className={classes.strong}>ADDRESS</span>:... Nova Scotia, Canada</p>
-            <p className={`${classes.p}`}><span className={classes.strong}>PHONE</span>:... +902 210 5887</p>
-          </div>
-          <div className={classes.col}>
-            <p className={`${classes.p}`}><span className={classes.strong}>EMAIL</span>:... gregpmillr@gmail.com</p>
-            <p className={`${classes.p}`}><span className={classes.strong}>FREELANCE</span>:... Available</p>
-          </div>
-        </div>
-      </section>
-
-      <section className={classes.section}>
-        <SectionHeader>
-          <span className={classes.orange}><strong>Contact Form</strong></span>
-        </SectionHeader>
-      </section>
-
-    </article>
-  )
-}
-
 function renderBio(classes) {
   return (
     <article className={classes.container}>
@@ -265,20 +220,16 @@ function renderBio(classes) {
   )
 }
 
-function renderContent(showResume, showContactForm, classes) {
+function renderContent(showResume, classes) {
   if (showResume) {
     return <Resume />;
-  } else if (showContactForm) {
-    return renderContactForm(classes);
-  } else {
-    return renderBio(classes);
   }
+  return renderBio(classes);
 }
 
 export const AboutMe = () => {
   const classes = useStyles();
   const { isShowing, toggle } = useResume();
-  const { showContactForm, toggleContactForm } = useContactForm();
   return (
     <div className={classes.layout}>
       <div className={classes.left}>
@@ -289,24 +240,13 @@ export const AboutMe = () => {
         </div>
         <div className={classes.downloads}>
           <div className={classes.downloadable} onClick={(e) => {
-            if (showContactForm) {
-              toggleContactForm(e);
-            }
             toggle(e);
           }}>
             <p>{isShowing ? 'BIO' : 'RESUME'}</p>
           </div>
-          <div className={`${classes.downloadable} ${classes.downloadableLeftBorder}`} onClick={(e) => {
-            if (isShowing) {
-              toggle(e);
-            }
-            toggleContactForm(e);
-            }}>
-            <p>CONTACT ME</p>
-          </div>
         </div>
       </div>
-      {renderContent(isShowing, showContactForm, classes)}
+      {renderContent(isShowing, classes)}
     </div>
   )
 }

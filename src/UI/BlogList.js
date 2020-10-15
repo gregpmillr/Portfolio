@@ -136,12 +136,12 @@ const useStyles = createUseStyles({
 const posts = [
   {
     publishDate: 'December 16, 2018',
-    title: 'Creativity Is More Than',
+    title: 'Lorem ipsum color de schmidt',
     description: 'Lorem ipsum color de schmidgt iwi lorem ipsum color',
   },
   {
     publishDate: 'December 16, 2018',
-    title: 'Creativity Is More Than',
+    title: 'Lorem ipsum color de schmidt',
     description: 'Lorem ipsum color de schmidgt iwi lorem ipsum color',
   },
 ]

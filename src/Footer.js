@@ -1,6 +1,5 @@
 import React from "react";
 import LinkedinIcon from './images/linkedin-icon.png';
-import InstagramIcon from './images/instagram-icon.png';
 import GithubIcon from './images/github.png';
 import {createUseStyles} from 'react-jss'
 
@@ -33,10 +32,6 @@ export const Footer = () => {
         </a>
         <a rel="noopener noreferrer" target="_blank" href="https://github.com/truescotian/">
           <img className={classes.image} src={GithubIcon} alt="Unavailable" />
-        </a>
-
-        <a rel="noopener noreferrer" target="_blank" href="https://www.instagram.com/_gregmiller/">
-          <img className={classes.image} src={InstagramIcon} alt="Unavailable" />
         </a>
       </div>
   </footer>

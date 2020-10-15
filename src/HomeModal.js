@@ -10,8 +10,8 @@ const useStyles = createUseStyles({
     margin: '10px 50px',
     fontWeight: '500',
     color: '#fff',
-    zIndex: '1',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    zIndex: '999',
   },
   '@media (max-width: 1050px)': {
     p: {
@@ -25,7 +25,7 @@ export const HomeModal = withStyles(global)(({text, children}) => {
   const { isShowing, toggle } = useModal();
 
   return (
-    <div onClick={toggle}>
+    <div>
       <p className={myClasses.p} onClick={toggle}>{text}</p>
       <Modal isShowing={isShowing} hide={toggle}>
         {children}

@@ -12,7 +12,10 @@ const useStyles = createUseStyles({
     float: 'right',
     cursor: 'pointer',
     position: 'absolute',
-    right: '10px'
+    right: '10px',
+    '& span': {
+      zIndex: '999',
+    }
   }
 })
 

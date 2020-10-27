@@ -6,6 +6,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import Admin from "./Admin";
 import "./index.css";
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/v2" component={HomeV2} />
+        <Route path="/admin" component={Admin} />
       </Switch>
     </Router>
   );

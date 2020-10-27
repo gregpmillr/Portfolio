@@ -85,7 +85,7 @@ const Sidebar = () => {
           <li>Sub Topic</li>
         </List>
         <List label="Ops">
-          <li>Sub Topic</li>
+          <li>Logging</li>
         </List>
         <List label="Networking">
           <li>Sub Topic</li>

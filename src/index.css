@@ -1,6 +1,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500,600,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
+@font-face {
+  font-family: 'Moderat';
+  src: url('fonts/Moderat-Light.eot');
+  src: local('Moderat Light'), local('Moderat-Light'),
+      url('fonts/Moderat-Light.eot?#iefix') format('embedded-opentype'),
+      url('fonts/Moderat-Light.woff2') format('woff2'),
+      url('fonts/Moderat-Light.woff') format('woff'),
+      url('fonts/Moderat-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Moderat';
+  src: url('fonts/Moderat-Thin.eot');
+  src: local('Moderat Thin'), local('Moderat-Thin'),
+      url('fonts/Moderat-Thin.eot?#iefix') format('embedded-opentype'),
+      url('fonts/Moderat-Thin.woff2') format('woff2'),
+      url('fonts/Moderat-Thin.woff') format('woff'),
+      url('fonts/Moderat-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Moderat';
+  src: url('fonts/Moderat-Bold.eot');
+  src: local('Moderat Bold'), local('Moderat-Bold'),
+      url('fonts/Moderat-Bold.eot?#iefix') format('embedded-opentype'),
+      url('fonts/Moderat-Bold.woff2') format('woff2'),
+      url('fonts/Moderat-Bold.woff') format('woff'),
+      url('fonts/Moderat-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Moderat';
+  src: url('fonts/Moderat-Regular.eot');
+  src: local('Moderat Regular'), local('Moderat-Regular'),
+      url('fonts/Moderat-Regular.eot?#iefix') format('embedded-opentype'),
+      url('fonts/Moderat-Regular.woff2') format('woff2'),
+      url('fonts/Moderat-Regular.woff') format('woff'),
+      url('fonts/Moderat-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html, body {
   color: #fff;
   font-family: 'Open Sans', sans-serif;

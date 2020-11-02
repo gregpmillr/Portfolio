@@ -1,108 +1,110 @@
-import React from 'react';
+import React, { useState } from "react";
 import {createUseStyles} from 'react-jss'
-import { BlogListModal } from "./BlogListModal";
-import { HomeModal } from "./HomeModal";
-import { Footer } from "./Footer";
-import Background from "./images/background.jpg";
-import { AboutMe } from "./AboutMe";
-import { ContactModal } from "./UI/ContactModal";
+import ListItem from "./UI/List/ListItem";
+import { homeData } from "./data/home";
+import AboutMeV2 from "./AboutMeV2";
+import { CSSTransition } from 'react-transition-group';
 
-// Create your Styles. Remember, since React-JSS uses the default preset,
-// most plugins are available without further configuration needed.
+const tabletBreak = '@media (max-width: 1250px)';
+const mobileBreak = '@media (max-width: 720px)';
+
 const useStyles = createUseStyles({
-  outerContainer: {
-    position: 'relative',
-    height: '100%',
-    width: '100%',
-    minHeight: '100%',
-    background: `
-      linear-gradient(
-        rgba(10, 31, 49, 0.80), 
-        rgba(10, 31, 49, 0.80)
-      ), 
-      url(${Background}) top center no-repeat`,
-    backgroundRepeat: 'no-repeat',
-    backgroundSize: 'cover',
-    display: 'flex',
-    flexFlow: 'column nowrap',
-    justifyContent: 'center',
-    alignItems: 'center',
-    overflow: 'auto'
-  },
   container: {
-    display: 'flex',
-    flexFlow: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    margin: 'auto',
-    width: '80%',
-    maxHeight: '100%',
-  },
-  header: {
-    width: '100%',
-    textAlign: 'center',
-  },
-  h1: {
-    fontFamily: 'Playfair Display',
-    fontSize: '3.8em',
-    textTransform: 'uppercase',
-    margin: '30px',
-    color: '#fff',
-    fontWeight: '400',
-    letterSpacing: '0.1em'
-  },
-  h2: {
-    fontSize: '1em',
-    margin: '50px',
-    color: '#fff',
-    fontWeight: '400',
-  },
-  listItems: {
-    display: 'flex',
-    flexFlow: 'row wrap',
-    width: 'auto'
-  },
-  '@media (max-width: 1050px)': {
-    container: {
-      alignItems: 'flex-start',
-      flexWrap:"wrap"
+    display: 'grid',
+    gridTemplateColumns: "1fr 4fr",
+    height: '100%',
+    backgroundColor: "#171717",
+    padding: "150px",
+    paddingBottom: "0px",
+    paddingRight: "0px",
+    boxSizing: "border-box",
+    overflow: "auto",
+    [tabletBreak]: {
+      gridTemplateColumns: "1fr",
+      padding: "20px",
+      paddingRight: "0px",
     },
-    h1: {
-      fontSize: '2.5em'
-    },
-    h2: {
-      fontSize: '1.2em'
-    },
+    [mobileBreak]: {
+      padding: "20px",
+      paddingRight: "0px",
+    }
   },
-});
+  left: {
+    fontSize: "14px",
+    letterSpacing: "normal",
+  },
+  list: {
+    display: "flex",
+    flexFlow: "column nowrap",
+    [mobileBreak]: {
+      marginTop: "30px",
+    },
+    "& li:not(:first-child)": {
+      marginTop: "60px"
+    }
+  },
+  span: {
+    color: "grey",
+    "&:hover": {
+      color: "#fff"
+    }
+  },
+  slideUp: {
+    display: "flex",
+    position: "absolute",
+    width: "100vw",
+    height: "100vh",
+    top: "0",
+    left: "0"
+  },
+  entering: {
+    maxHeight: '0px',
+    overflow: 'hidden'
+  },
+  entered: {
+    overflow: 'hidden',
+    maxHeight: '2100vh',
+    backgroundColor: "black",
+    transition: 'max-height 2s cubic-bezier(0.77,0,0.175,1) ',
+  },
+  exiting: {
+    maxHeight: '2100vh',
+  },
+  exited: {
+    overflow: 'hidden',
+    maxHeight: '0px',
+    transition: 'max-height 2s cubic-bezier(0.77,0,0.175,1) '
+  },
+})
 
-export const Home = () => {
-  const myClasses = useStyles()
+const components = {
+  aboutMe: AboutMeV2
+};
+
+const Home = () => {
+  const classes = useStyles();
+  let [page, setPage] = useState(null);
+
+  const show = page => {
+    const SpecificPage = components[page];
+    return <SpecificPage />;
+  } 
 
   return (
-    <div className={myClasses.outerContainer}>
-      <section className={myClasses.container}>
-
-        <header className={myClasses.header}>
-          <h1 className={myClasses.h1}>
-            greg miller
-          </h1>
-          <h2 className={myClasses.h2}>
-            Let's build something amazing.
-          </h2>
-        </header>
-
-        <article className={myClasses.listItems}>
-            <HomeModal text={"ABOUT ME"}>
-              <AboutMe />
-            </HomeModal>
-            <BlogListModal />
-            <ContactModal />
-        </article>
-
-      </section>
-
-      <Footer />
-    </div>
+    <main className={classes.container}>
+      <div className={classes.left}><span className={classes.span}>Greg Miller</span></div>
+      <ol className={classes.list}>
+        {homeData.map((o, index) => <ListItem key={index} {...o} onClick={() => setPage(o.page)} />)}
+      </ol>
+      <CSSTransition in={page !== null} timeout={300}>
+        {state => (
+          <div className={`${classes.slideUp} ${classes[state]}`}>
+            {page !== null && show(page)}
+          </div>
+        )}
+      </CSSTransition>
+    </main>
   )
 }
+
+export default Home;

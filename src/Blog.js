@@ -23,7 +23,7 @@ const useStyles = createUseStyles({
   }
 })
 
-const HomeV2 = () => {
+const Blog = () => {
   const classes = useStyles()
 
   return (
@@ -36,4 +36,4 @@ const HomeV2 = () => {
   )
 }
 
-export default HomeV2;
+export default Blog;

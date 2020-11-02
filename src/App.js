@@ -1,6 +1,6 @@
 import React from "react";
-import { Home } from './Home';
-import HomeV2 from './HomeV2';
+import Home from './Home';
+import Blog from './Blog';
 import {
   BrowserRouter as Router,
   Switch,
@@ -14,7 +14,7 @@ export default function App() {
     <Router>      
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/v2" component={HomeV2} />
+        <Route exact path="/blog" component={Blog} />
         <Route path="/admin" component={Admin} />
       </Switch>
     </Router>
